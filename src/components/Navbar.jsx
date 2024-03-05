@@ -19,13 +19,22 @@ const Navbar = () => {
           </Link>
 
           <div className='hidden md:flex items-center gap-8'>
-            <NavLink to={'/bitcoin'} className='font-semibold'>
+            <NavLink
+              to={'/bitcoin'}
+              className='font-semibold hover:text-gray hover:underline'
+            >
               Crypto Taxes
             </NavLink>
-            <NavLink to={'/bitcoin'} className='font-semibold'>
+            <NavLink
+              to={'/bitcoin'}
+              className='font-semibold hover:text-gray hover:underline'
+            >
               Free Tools
             </NavLink>
-            <NavLink to={'/bitcoin'} className='font-semibold'>
+            <NavLink
+              to={'/bitcoin'}
+              className='font-semibold hover:text-gray hover:underline'
+            >
               Resource Center
             </NavLink>
 
@@ -57,13 +66,22 @@ const Navbar = () => {
                 <X />
               </button>
 
-              <NavLink to={'/bitcoin'} className='font-semibold'>
+              <NavLink
+                to={'/bitcoin'}
+                className='font-semibold hover:text-gray hover:underline'
+              >
                 Crypto Taxes
               </NavLink>
-              <NavLink to={'/bitcoin'} className='font-semibold'>
+              <NavLink
+                to={'/bitcoin'}
+                className='font-semibold hover:text-gray hover:underline'
+              >
                 Free Tools
               </NavLink>
-              <NavLink to={'/bitcoin'} className='font-semibold'>
+              <NavLink
+                to={'/bitcoin'}
+                className='font-semibold hover:text-gray hover:underline'
+              >
                 Resource Center
               </NavLink>
 

@@ -10,7 +10,7 @@ const App = () => {
       <Navbar />
 
       {/* ----Breadcrumbs---- */}
-      <div className='container mx-auto m-4 p-1'>
+      <div className='container mx-auto m-2 sm:my-4 p-1'>
         <span className='flex items-center'>
           <p className='text-sm text-gray'>Cryptocurrencies </p>
           <ChevronsRight className='text-[10px] text-gray' />
