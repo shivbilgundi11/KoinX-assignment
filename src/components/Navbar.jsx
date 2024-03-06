@@ -38,7 +38,7 @@ const Navbar = () => {
               Resource Center
             </NavLink>
 
-            <button className='gradient-bg w-[136px] h-10 rounded-lg text-white font-semibold'>
+            <button className='gradient-bg w-[136px] h-10 rounded-lg text-white font-semibold hover:shadow-xl transition duration-200'>
               Get Started
             </button>
           </div>

@@ -4,7 +4,7 @@ import TradingViewWidget from './ChartWidget';
 
 const CoinDetails = () => {
   return (
-    <div className='col-span-2 bg-white rounded-lg p-5'>
+    <div className='lg:col-span-2 bg-white rounded-lg p-5'>
       {/* ------Basic-Coin-Details------ */}
       <div className='flex items-center gap-1 md:gap-2'>
         <span className='w-8 h-8 md:w-9 md:h-9 overflow-hidden'>

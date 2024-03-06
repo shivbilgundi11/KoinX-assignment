@@ -23,7 +23,7 @@ const App = () => {
         </span>
       </div>
 
-      <section className='md:container md:mx-auto p-1 grid grid-cols-3 gap-5'>
+      <section className='md:container md:mx-auto p-1 grid grid-cols-1 xl:grid-cols-3 gap-5'>
         {/* Column-One-CoinDetails */}
         <CoinDetails />
 
