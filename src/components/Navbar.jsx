@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <div>
       <header className='bg-white w-full relative h-16 md:h-20 shadow-md flex items-center'>
-        <nav className='container mx-auto p-2 flex justify-between items-center'>
+        <nav className='md:container md:mx-auto w-full p-2 flex justify-between items-center'>
           <Link to={'/bitcoin'}>
             <img src={Logo} alt='Logo' />
           </Link>
@@ -46,7 +46,7 @@ const Navbar = () => {
           {/* ----Mobile-Toggles-Open---- */}
           <button
             onClick={() => handleToggle()}
-            className='font-semibold md:hidden p-1 hover:bg-gray-light-bg rounded-sm transition'
+            className='font-semibold md:hidden p-1 hover:bg-gray-light-bg rounded-sm ml-auto transition'
           >
             <AlignJustify />
           </button>
