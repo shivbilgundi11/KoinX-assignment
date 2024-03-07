@@ -8,7 +8,6 @@ const router = createBrowserRouter([
   {
     path: '/:coins',
     element: <App />,
-    // loader: rootLoader,
   },
 ]);
 
