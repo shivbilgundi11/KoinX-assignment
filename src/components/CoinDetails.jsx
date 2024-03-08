@@ -1,22 +1,64 @@
-import CoinStatus from './(ui-components)/CoinStatus';
 import TradingViewWidget from './ChartWidget';
-// import { baseURL } from '../utils/utils';
+import { useParams } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { CryptoData } from '../store/context';
+import axios from 'axios';
+import CoinStatus from './(ui-components)/CoinStatus';
+import Loading from './(ui-components)/Loader';
 
 const CoinDetails = () => {
-  // const { data, loading } = useFetch(
-  //   `${coinBasicsURL}/search?query=${params?.coins}`,
-  // );
+  const { coins } = useParams();
+  const [store, setStore] = useContext(CryptoData);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // const { data: priceDataUSD, isLoading } = useFetch(
-  //   `${baseURL}/simple/price?ids=&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true&precision=2`,
-  // );
+  useEffect(() => {
+    const fetchCryptoData = async () => {
+      setIsLoading(true);
+      try {
+        // Fetching crypto data
+        const searchResponse = await axios.get(
+          `https://api.coingecko.com/api/v3/search?query=${coins}`,
+        );
+        const coinId = searchResponse.data.coins[0].id; // Extracting the id of the first coin
 
-  // console.log(priceDataUSD);
-  // console.log(priceDataUSD?.data?.coins[0]?.id?.usd);
+        // // Fetching price in USD
+        const priceUSDResponse = await axios.get(
+          `https://api.coingecko.com/api/v3/simple/price?ids=${coinId}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true&precision=2
+          `,
+        );
+        const usdPrice = priceUSDResponse?.data[coinId];
 
-  // if (data?.coins.length == 0) {
-  //   alert('Please enter a valid coin id...!');
-  // }
+        // // Fetching price in INR
+        const priceINRResponse = await axios.get(
+          `https://api.coingecko.com/api/v3/simple/price?ids=${coinId}&vs_currencies=inr`,
+        );
+        const inrPrice = priceINRResponse?.data[coinId];
+
+        setStore((prev) => ({
+          ...prev,
+          coinBasics: searchResponse?.data?.coins[0],
+        }));
+        setStore((prev) => ({
+          ...prev,
+          coinPriceUSD: usdPrice,
+        }));
+        setStore((prev) => ({
+          ...prev,
+          coinPriceINR: inrPrice,
+        }));
+      } catch (error) {
+        console.error('Error fetching crypto data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchCryptoData();
+  }, [coins]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div className='lg:col-span-2 bg-white rounded-lg p-5'>
@@ -24,22 +66,22 @@ const CoinDetails = () => {
       <div className='flex items-center gap-1 md:gap-2'>
         <span className='w-8 h-8 md:w-9 md:h-9 overflow-hidden'>
           <img
-            // src={data?.coins.length > 0 ? data.coins[0].thumb : CoinLogo}
+            src={store?.coinBasics?.large}
             alt='Bitcoin'
             className='block object-cover object-center w-full'
           />
         </span>
 
         <h1 className='text-black font-semibold text-[21px] md:text-[24px]'>
-          {/* {data?.coins && data.coins[0]?.name} */}
+          {store?.coinBasics?.name}
         </h1>
 
         <p className='text-sm text-[#5d667b] font-semibold'>
-          {/* {data?.coins && data.coins[0]?.symbol} */}
+          {store?.coinBasics?.symbol}
         </p>
 
         <div className=' w-20 h-8 md:h-10 rounded-lg bg-[#5d667b] text-white text-center leading-8 md:leading-10'>
-          {/* Rank #{data?.coins && data?.coins[0]?.market_cap_rank} */}
+          Rank #{store?.coinBasics?.market_cap_rank}
         </div>
       </div>
 
@@ -47,12 +89,30 @@ const CoinDetails = () => {
       <div className='my-4 md:my-6'>
         <span className='flex gap-3 items-center'>
           <p className='font-semibold text-[28px] md:mr-3'>
-            {/* {priceDataUSD && priceDataUSD?.data?.coins[0]?.id?.usd} */}
+            {store?.coinPriceUSD?.usd?.toLocaleString('en-US', {
+              style: 'currency',
+              currency: 'USD',
+            })}
           </p>
-          <CoinStatus profit={false} perc={2.5} />
+          {store?.coinPriceUSD?.usd_24h_change < 0 ? (
+            <CoinStatus
+              profit={true}
+              perc={store?.coinPriceUSD?.usd_24h_change.toFixed(2)}
+            />
+          ) : (
+            <CoinStatus
+              profit={true}
+              perc={store?.coinPriceUSD?.usd_24h_change.toFixed(2)}
+            />
+          )}
           <p className='text-sm text-[#5d667b] font-medium'>(24H)</p>
         </span>
-        <p className='font-medium mt-1'>₹ 39,42,343</p>
+        <p className='font-medium mt-1'>
+          {store?.coinPriceINR?.inr?.toLocaleString('en-IN', {
+            style: 'currency',
+            currency: 'INR',
+          })}
+        </p>
       </div>
 
       <hr className='text-gray-light-bg font-medium' />
