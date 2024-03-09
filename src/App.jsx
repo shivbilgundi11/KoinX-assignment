@@ -5,6 +5,7 @@ import GetStarted from './components/GetStarted';
 import { CryptoData } from './store/context';
 import { useState } from 'react';
 import CoinDetails from './components/CoinDetails';
+import Performance from './components/Performance';
 
 const coinDatas = {
   coinBasics: null,
@@ -31,13 +32,18 @@ const App = () => {
             </p>
           </span>
         </div>
-
+        {/* ----Main-Grid---- */}
         <section className='md:container md:mx-auto p-1 grid grid-cols-1 xl:grid-cols-3 gap-5'>
           {/* Column-One-CoinDetails */}
-          <CoinDetails />
+          <div className='lg:col-span-2'>
+            <CoinDetails />
+            <Performance />
+          </div>
 
           {/* Get-Started-With-KoinX */}
-          <GetStarted />
+          <div className='relative'>
+            <GetStarted />
+          </div>
         </section>
       </CryptoData.Provider>
     </>

@@ -26,4 +26,17 @@ body {
       rgba(0, 82, 254, 1) 59%
     );
   }
+
+  .rangeGradient {
+    background: rgb(255, 73, 73);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 73, 73, 1) 0%,
+      rgba(255, 78, 17, 1) 11%,
+      rgba(252, 135, 10, 1) 22%,
+      rgba(255, 175, 17, 1) 38%,
+      rgba(194, 203, 33, 1) 51%,
+      rgba(17, 235, 104, 1) 89%
+    );
+  }
 }

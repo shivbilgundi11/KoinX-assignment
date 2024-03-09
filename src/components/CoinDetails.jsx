@@ -9,6 +9,7 @@ import Loading from './(ui-components)/Loader';
 const CoinDetails = () => {
   const { coins } = useParams();
   const [store, setStore] = useContext(CryptoData);
+  console.log(store);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -57,11 +58,15 @@ const CoinDetails = () => {
   }, [coins]);
 
   if (isLoading) {
-    return <Loading />;
+    return (
+      <div className='lg:col-span-2 bg-white rounded-lg p-5'>
+        <Loading />
+      </div>
+    );
   }
 
   return (
-    <div className='lg:col-span-2 bg-white rounded-lg p-5'>
+    <div className='bg-white rounded-lg p-5'>
       {/* ------Basic-Coin-Details------ */}
       <div className='flex items-center gap-1 md:gap-2'>
         <span className='w-8 h-8 md:w-9 md:h-9 overflow-hidden'>
