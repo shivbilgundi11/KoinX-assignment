@@ -20,6 +20,10 @@ const YouMayAlsoLike = () => {
 
       <div className='my-2'>
         <p className='text-[24px] py-2 font-semibold'>Trending Coins</p>
+        <p className='text-warning my-3'>
+          Note: This section is without carousel intentionally to show coin
+          cards...
+        </p>
         <div className='flex items-center justify-center gap-2 flex-wrap'>
           {store?.trendingCoins &&
             store?.trendingCoins.map((coin) => {
