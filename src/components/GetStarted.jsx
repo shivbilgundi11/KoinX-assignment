@@ -1,8 +1,12 @@
+import { useContext } from 'react';
 import GetStartedFrame from '../assets/images/getStartedframe.png';
 import Button from './(ui-components)/Button';
 import TrendingCoin from './(ui-components)/TrendingCoin';
+import { CryptoData } from '../store/context';
 
 const GetStarted = () => {
+  const [store] = useContext(CryptoData);
+
   return (
     <aside className='rounded-lg grid grid-cols-1 justify-center items-center gap-5'>
       {/* ------Get-Started-Banner------ */}
@@ -28,9 +32,10 @@ const GetStarted = () => {
         <h3 className='font-semibold text-[24px]'>Trending Coins (24h)</h3>
 
         <div>
-          <TrendingCoin />
-          <TrendingCoin />
-          <TrendingCoin />
+          {store.trendingCoins &&
+            store?.trendingCoins.slice(0, 3).map((coin) => {
+              return <TrendingCoin key={coin?.item?.id} coin={coin} />;
+            })}
         </div>
       </div>
     </aside>

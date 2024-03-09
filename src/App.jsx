@@ -10,11 +10,13 @@ import Sentiment from './components/Sentiment';
 import AboutCoin from './components/AboutCoin';
 import Tokenomics from './components/Tokenomics';
 import Teams from './components/Teams';
+import YouMayAlsoLike from './components/YouMayAlsoLike';
 
 const coinDatas = {
   coinBasics: null,
   coinPriceUSD: null,
   coinPriceINR: null,
+  trendingCoins: null,
 };
 
 const App = () => {
@@ -46,6 +48,7 @@ const App = () => {
             <AboutCoin />
             <Tokenomics />
             <Teams />
+            <YouMayAlsoLike />
           </div>
 
           {/* Get-Started-With-KoinX */}

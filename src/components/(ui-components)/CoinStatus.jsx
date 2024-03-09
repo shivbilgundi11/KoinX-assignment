@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { TrendingDown, TrendingUp } from 'lucide-react';
 
 const CoinStatus = ({ profit, perc }) => {

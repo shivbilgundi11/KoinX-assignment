@@ -9,7 +9,6 @@ import Loading from './(ui-components)/Loader';
 const CoinDetails = () => {
   const { coins } = useParams();
   const [store, setStore] = useContext(CryptoData);
-  console.log(store);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -29,11 +28,17 @@ const CoinDetails = () => {
         );
         const usdPrice = priceUSDResponse?.data[coinId];
 
-        // // Fetching price in INR
+        // Fetching price in INR
         const priceINRResponse = await axios.get(
           `https://api.coingecko.com/api/v3/simple/price?ids=${coinId}&vs_currencies=inr`,
         );
         const inrPrice = priceINRResponse?.data[coinId];
+
+        // Fetching trending coins...
+        const trendingCoinsRes = await axios.get(
+          `https://api.coingecko.com/api/v3/search/trending
+          `,
+        );
 
         setStore((prev) => ({
           ...prev,
@@ -46,6 +51,10 @@ const CoinDetails = () => {
         setStore((prev) => ({
           ...prev,
           coinPriceINR: inrPrice,
+        }));
+        setStore((prev) => ({
+          ...prev,
+          trendingCoins: trendingCoinsRes?.data?.coins,
         }));
       } catch (error) {
         console.error('Error fetching crypto data:', error);
