@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { TrendingDown, TrendingUp } from 'lucide-react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const CoinStatus = ({ profit, perc }) => {
   return (
@@ -8,8 +8,8 @@ const CoinStatus = ({ profit, perc }) => {
         profit ? 'bg-profit text-success' : 'bg-loss text-danger'
       }`}
     >
-      <p className='flex items-center justify-center gap-1 font-medium'>
-        {profit ? <TrendingUp /> : <TrendingDown />} {perc}%
+      <p className='flex text-[10px] sm:text-[12px] text-nowrap md:text-[15px] items-center justify-center gap-1 font-medium'>
+        {profit ? <ChevronUp /> : <ChevronDown />} {perc}%
       </p>
     </div>
   );
