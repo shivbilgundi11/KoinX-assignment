@@ -7,7 +7,7 @@ import Coins from './components/Coins.jsx';
 
 const router = createBrowserRouter([
   {
-    path: '/coins',
+    path: '/',
     element: <Coins />,
   },
   {
