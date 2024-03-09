@@ -20,7 +20,7 @@ const Performance = () => {
   };
 
   return (
-    <section className='my-4'>
+    <section className='my-3'>
       {/* ----Tabs-Component---- */}
       <div className='w-full h-12 flex items-center justify-between gap-5 border-b-2 border-[#c4c5c8] overflow-auto'>
         {tabs.map((tab) => (

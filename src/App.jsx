@@ -6,6 +6,10 @@ import { CryptoData } from './store/context';
 import { useState } from 'react';
 import CoinDetails from './components/CoinDetails';
 import Performance from './components/Performance';
+import Sentiment from './components/Sentiment';
+import AboutCoin from './components/AboutCoin';
+import Tokenomics from './components/Tokenomics';
+import Teams from './components/Teams';
 
 const coinDatas = {
   coinBasics: null,
@@ -38,6 +42,10 @@ const App = () => {
           <div className='lg:col-span-2'>
             <CoinDetails />
             <Performance />
+            <Sentiment />
+            <AboutCoin />
+            <Tokenomics />
+            <Teams />
           </div>
 
           {/* Get-Started-With-KoinX */}
