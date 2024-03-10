@@ -1,4 +1,5 @@
 import CoinStatus from './(ui-components)/CoinStatus';
+import parse from 'html-react-parser';
 
 /* eslint-disable react/prop-types */
 const CoinCard = ({ coin }) => {
@@ -17,7 +18,7 @@ const CoinCard = ({ coin }) => {
         />
       </div>
       <p className='font-medium text-[12px] md:text-[20px]'>
-        {coin?.item?.data?.price}
+        {parse(coin?.item?.data?.price)}
       </p>
 
       <div className='w-[126px] h-[38px] md:w-[200px] md:h-[60px] overflow-hidden mx-auto'>

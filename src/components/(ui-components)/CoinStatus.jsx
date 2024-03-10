@@ -5,7 +5,7 @@ const CoinStatus = ({ profit, perc }) => {
   return (
     <div
       className={`w-[84px] h-7 rounded-[4px] flex items-center justify-center ${
-        profit ? 'bg-profit text-success' : 'bg-loss text-danger'
+        profit > 0 ? 'bg-profit text-success' : 'bg-loss text-danger'
       }`}
     >
       <p className='flex text-[10px] sm:text-[12px] text-nowrap md:text-[15px] items-center justify-center gap-1 font-medium'>
